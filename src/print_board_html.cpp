@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "board.h"
 #include "board_print_html.h"
-int print(int (&board)[8][8])
+int print(int board[8][8])
 {
 	FILE *index = fopen ("index.html", "w");
 	if (index==NULL) {printf ("error opening file");}
