@@ -1,0 +1,4 @@
+$ cat .gitignore
+/build/*.o
+/bin/*.exe
+index.html
