@@ -1,15 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "board.h"
-#include "board_print_html.h"
-int print(int board[8][8])
+#include "print_board_html.h"
+void printboard(char a[8][8])
+/*{
+	for(int i=0;i<8;i++)
+    {
+      for(int j=0;j<8;j++)
+	{
+	  printf("%c ",a[i][j]);
+	}
+      printf("\n");
+    }
+} */
+
 {
-	FILE *index = fopen ("index.html", "w");
+	FILE *index = fopen ("../index.html", "w");
 	if (index==NULL) {printf ("error opening file");}
-	FILE *source = fopen ("header.html", "r");
-	int c;
+	FILE *source = fopen ("../header.html", "r");
+	if (source==NULL) {printf ("error opening file");}
+	char c;	
 	while ((c = fgetc(source)) != EOF) {
-		fputc (c, index);
+		fputc(c,index);
+//		printf("%c\n",c);
 	}
 	fprintf (index, "<body>\n\t<table class=\"chessboard\">\n\t\t"); //lol kek
 	for (int i = 0; i<8; i++)
@@ -17,10 +29,10 @@ int print(int board[8][8])
 		for (int j = 0; j < 8; j++)
 		{
 			if (j==0) fprintf (index, "<tr>");
-			if (board[i][j]==0) fprintf (index, "<td></td>\n");
+			if (a[i][j]==0) fprintf (index, "<td></td>\n");
 			else {
 			fprintf (index, "<td><span class=\"");
-			switch (board[i][j]) {
+			switch (a[i][j]) {
 				case 'R': fprintf (index, "black rook");   break;
 				case 'N': fprintf (index, "black knight"); break;
 				case 'B': fprintf (index, "black bishop"); break;
@@ -38,5 +50,6 @@ int print(int board[8][8])
 			}
 		if (j==7) fprintf (index, "</tr>");
 		}
-	}
+	} 
+	fclose(index);
 }

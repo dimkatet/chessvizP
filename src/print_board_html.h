@@ -1,1 +1,2 @@
-int print(int (&board)[8][8]);
+void printboard(char a[8][8]);
+

@@ -4,7 +4,7 @@
 #include "board_read.h"
 #include "print_board_html.h"
 using namespace std;
-int main
+int main()
 {
   int k=1;
   char a[8][8]={
@@ -24,7 +24,7 @@ int main
   if(queue(a,x0,y0,x1,y1,strk,k))
   	{
 	  motion0(a,x0,y0,x1,y1,strk);
-	  print(a);
+	  printboard(a);
 	  k++;
 	}
   }
